@@ -16,23 +16,9 @@ public class PassengerServices {
         this.templateEngine = templateEngine;
     }
 
-    public String generateTemplate(){
-        Passenger pass1 = Passenger.builder().name("ANA MEZA").type("Adulto").index(1)
-                .build();
-
-        Passenger pass2 = Passenger.builder().name("MARIA RODRIGUEZ").type("Adulto").index(2)
-                .build();
-
-        Passenger pass3 = Passenger.builder().name("CAMILO DAZA").type("Niño").index(1)
-                .build();
-        Passenger pass4 = Passenger.builder().name("LADY OSPINO").type("Niño").index(2)
-                .build();
-        Passenger pass5 = Passenger.builder().name("ADA SUAREZ").type("Infante").index(1)
-                .build();
-        List<Passenger> passengers = Arrays.asList(pass1,pass2,pass3,pass4,pass5);
-
-        final Context ctx = new org.thymeleaf.context.Context();
-        ctx.setVariable("passengers", passengers);
+    public String generateTemplate(PassengerDto infoPassenger){
+        final Context ctx = new Context();
+        ctx.setVariable("passengers", infoPassenger.getInfo());
         return this.templateEngine.process("email", ctx);
     }
 

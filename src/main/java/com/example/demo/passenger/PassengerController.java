@@ -1,9 +1,9 @@
 package com.example.demo.passenger;
 
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("passenger")
@@ -15,8 +15,8 @@ public class PassengerController {
         this.passengerServices = passengerServices;
     }
 
-    @GetMapping
-    public String confirmation(){
-       return passengerServices.generateTemplate();
+    @PostMapping
+    public String confirmation(@RequestBody PassengerDto infoPassenger){
+       return passengerServices.generateTemplate(infoPassenger);
     }
 }
