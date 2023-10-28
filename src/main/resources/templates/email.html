@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        *,*::after,*::before{
+          box-sizing: border-box;
+        }
+        .container{
+          max-width: 588px;
+          margin-left: auto;
+          margin-right: auto;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        .title{
+          font-size: 1.125rem;
+          margin-bottom: 0.5rem;
+        }
+        .passengers-container{
+          border-top: 1px dashed #6633CC;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+        }
+        .passenger{
+          display: flex;
+          padding-left: 0.5rem;
+          padding-top: 0.5rem;
+          padding-bottom: 0.5rem;
+        }
+        .passenger-icon{
+          width: 1.5rem;
+          height: 1.5rem;
+          margin-right: 0.5rem;
+        }
+        .passenger-name{
+          font-size: 0.8125rem;
+          margin: 0;
+          margin-bottom: 0.25rem;
+        }
+        .passenger-type{
+          font-size: 0.6875rem;
+          margin: 0;
+        }
+        .passenger:nth-child(odd){
+          border-right: 1px dashed #6633CC;
+        }
+
+    </style>
+    <title>Document</title>
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Passengers</h1>
+    <div class="passengers-container">
+
+        <div th:each="passenger:${passengers}" class="passenger">
+            <img class="passenger-icon" src="https://ci4.googleusercontent.com/proxy/Vca14FY9qgT1T7VFGB2J6gM7z3AFqA_0yTwFF8ykFDYvh0dZVYM0M-mYZwiaLcWFI1Z85i2-z3lR_-1gierz9nHUW0La40-ot1gILepIeomuipBe=s0-d-e1-ft#https://asiltda.com/clientes/landsoft/wingo/viaj-421/adulto-M.png" alt="">
+            <div>
+                <h3 th:text="${passenger.name}" class="passenger-name"></h3>
+                <p  th:text="${passenger.type} + ${passenger.index}" class="passenger-type"> </p>
+            </div>
+        </div>
+
+    </div>
+</div>
+</body>
+</html>
